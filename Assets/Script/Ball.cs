@@ -4,32 +4,30 @@ using UnityEngine.UI;
 
 public class Ball : MonoBehaviour
 {
-
+    Vector3 orginalPosition;
     Vector2 directionX = Vector2.right;
     Vector2 directionY = Vector2.up;
-    float speed = 10.0f;
+    float speed = 8.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("ball movement.");
-
+        Debug.Log("Game Start.");
+        orginalPosition = gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > 10.0f)
+        if (transform.position.x > 10.0f || transform.position.x < -10.0f)
         {
             directionX = -directionX;
-            //scoreP1 += 1;
-            gameObject.SetActive(false);
+
+            gameObject.GetComponent<Renderer>().enabled = false;
+            gameObject.transform.position = orginalPosition;
+
+            gameObject.GetComponent<Renderer>().enabled = true;
         }
-        else if (transform.position.x < -10.0f)
-        {
-            directionX = -directionX;
-            //scoreP2 += 1;
-            //ScoreText2.text = scoreP2.ToString();
-        }
+
         if (transform.position.y > 5.0f || transform.position.y < -5.0f)
         {
             directionY = -directionY;

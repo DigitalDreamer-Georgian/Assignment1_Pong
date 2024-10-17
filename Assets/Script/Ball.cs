@@ -18,13 +18,13 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x > 10.0f || transform.position.x < -10.0f)
+        if (transform.position.x > 12.0f || transform.position.x < -12.0f)
         {
-            directionX = -directionX;
+            //directionX = -directionX;
 
             gameObject.GetComponent<Renderer>().enabled = false;
             gameObject.transform.position = orginalPosition;
-
+            RandomDirection();
             gameObject.GetComponent<Renderer>().enabled = true;
         }
 
@@ -36,5 +36,16 @@ public class Ball : MonoBehaviour
         Vector3 changeX = directionX * speed * dt;
         Vector3 changeY = directionY * speed * dt;
         transform.position = transform.position + changeX + changeY;
+    }
+
+    void RandomDirection()
+    {
+
+    }
+    public void ChangeDirection()
+    {
+        directionY = -directionY;
+        directionX = -directionX;
+        Debug.Log("change direction");
     }
 }

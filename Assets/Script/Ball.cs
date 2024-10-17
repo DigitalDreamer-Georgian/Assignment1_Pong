@@ -40,6 +40,24 @@ public class Ball : MonoBehaviour
 
     void RandomDirection()
     {
+        int xcount = Random.Range(0,3);
+        if (xcount == 0)
+        {
+            directionY = -directionY;
+        }
+        else if (xcount == 1)
+        {
+            directionX = -directionX;
+        }
+        else if(xcount == 2)
+        {
+            directionY = -directionY;
+            directionX = -directionX;
+        }
+        else
+        {
+
+        }
 
     }
     public void ChangeDirection()
